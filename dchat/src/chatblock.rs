@@ -44,3 +44,21 @@ impl Block for Chatblock {
         sha256_hash(format!("{}{}{}", self.to, self.from, self.msg).as_bytes())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn chatblock_test() {
+        let to = "Ryan".to_string();
+        let from = "Jake".to_string();
+        let msg = "Hello".to_string();
+
+        let block = Chatblock::new(to, from, msg);
+
+        assert_eq!(block.to(), to);
+        assert_eq!(block.from(), from);
+        assert_eq!(block.msg(), msg);
+    }
+}
