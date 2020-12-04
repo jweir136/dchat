@@ -23,20 +23,20 @@ impl Chatblock {
         }
     }
 
-    pub fn to(&self) -> String {
-        self.to
+    pub fn to(&self) -> &String {
+        &self.to
     }
 
-    pub fn from(&self) -> String {
-        self.from
+    pub fn from(&self) -> &String {
+        &self.from
     }
     
-    pub fn time(&self) -> Instant {
-        self.time
+    pub fn time(&self) -> &Instant {
+        &self.time
     }
 
-    pub fn msg(&self) -> String {
-        self.msg
+    pub fn msg(&self) -> &String {
+        &self.msg
     }
 }
 
