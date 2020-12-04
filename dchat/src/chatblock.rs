@@ -1,5 +1,8 @@
 use blockchain::Block;
+use block_cryptography_rust::hashing::sha256_hash;
+use block_cryptography_rust::signing::{RSAKeyPair, RSASignature, sign_data};
 
+use ring::digest::Digest;
 use std::time::Instant;
 
 pub struct Chatblock {
@@ -33,5 +36,11 @@ impl Chatblock {
 
     pub fn msg(&self) -> String {
         self.msg
+    }
+}
+
+impl Block for Chatblock {
+    fn hash(&self) -> Digest {
+        sha256_hash(format!("{}{}{}", self.to, self.from, self.msg).as_bytes())
     }
 }
