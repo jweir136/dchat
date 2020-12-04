@@ -10,3 +10,4 @@ edition = "2018"
 ring = "0.17.0-alpha.4"
 blockchain = {git="https://github.com/jweir136/blockchain.git"}
 block_cryptography_rust = {git="https://github.com/jweir136/block_cryptography_rust.git"}
+serde = "1.0.117"
