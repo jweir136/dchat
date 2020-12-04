@@ -4,6 +4,7 @@ use block_cryptography_rust::signing::{RSAKeyPair, RSASignature, sign_data};
 
 use ring::digest::Digest;
 use std::time::Instant;
+use std::fmt::{Debug, Result, Formatter};
 
 pub struct Chatblock {
     to: String,
@@ -42,6 +43,12 @@ impl Chatblock {
 impl Block for Chatblock {
     fn hash(&self) -> Digest {
         sha256_hash(format!("{}{}{}", self.to, self.from, self.msg).as_bytes())
+    }
+}
+
+impl Debug for Chatblock {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        f.debug_struct("Chatblock").field("to", &self.to).field("from", &self.from).field("time", &format!("{:?}", self.time)).field("msg", &self.msg).finish()
     }
 }
 
